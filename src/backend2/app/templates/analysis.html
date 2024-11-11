@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Boston Street Cleaning - Analysis{% endblock %}
+
+{% block content %}
+    <!-- Analysis Content -->
+    <div class="container">
+        <h1 class="mb-4">Street Cleaning Analysis</h1>
+        
+        <!-- Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card text-white bg-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Streets</h5>
+                        <h2 class="card-text">{{ total_streets }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-success">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Districts</h5>
+                        <h2 class="card-text">{{ total_districts }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-info">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Miles</h5>
+                        <h2 class="card-text">{{ total_miles }}mi</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-warning">
+                    <div class="card-body">
+                        <h5 class="card-title">Most Common Day</h5>
+                        <h2 class="card-text">{{ most_common_day }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Streets by District</h5>
+                        <canvas id="districtChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Cleaning Schedule Distribution</h5>
+                        <canvas id="scheduleChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    {% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='analysis.js') }}"></script>
+    {% endblock %}
+</body>
+</html> 
